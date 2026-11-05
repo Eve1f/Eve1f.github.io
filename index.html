@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yifu Chen | Homepage</title>
+  <meta name="description" content="Yifu Chen — M.S. student at Zhejiang University and research intern at Tencent Hunyuan, working on post-training of spoken dialogue models, full-duplex interaction and multimodal agents.">
+  <meta name="author" content="Yifu Chen">
+  <meta property="og:title" content="Yifu Chen">
+  <meta property="og:description" content="M.S. @ Zhejiang University · Spoken Dialogue Post-training · Full-Duplex Interaction · Multimodal Agents">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231f5bd8'/%3E%3Cstop offset='1' stop-color='%236a5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EYC%3C/text%3E%3C/svg%3E">
+  <style>
+/* ========== Theme ========== */
+:root {
+  --text: #18202f;
+  --muted: #566074;
+  --faint: #8a93a4;
+  --line: #e7eaf0;
+  --bg-soft: #f6f8fb;
+  --accent: #1f5bd8;
+  --accent-soft: #ecf2fe;
+  --violet: #6a5cff;
+  --green: #15803d;
+  --green-soft: #ebf8f0;
+  --viz-first: #1f5bd8;  /* validated pair: same blue ramp, light end 2.1:1 on white */
+  --viz-co: #86b6ef;
+  --badge-conf: #1f4fb8;
+  --badge-oral: #d4380d;
+  --badge-pre: #5b6577;
+  --grad: linear-gradient(100deg, #1f5bd8, #6a5cff);
+  --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 6px 18px rgba(16, 24, 40, .07);
+  --shadow-hover: 0 2px 4px rgba(16, 24, 40, .06), 0 12px 28px rgba(16, 24, 40, .12);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* ========== Base ========== */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font: 16px/1.7 var(--font);
+  color: var(--text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Decorative backdrop: soft color glows and a dot grid that fade out toward the content */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(560px 440px at 0 0, rgba(31, 91, 216, .11), transparent 70%),
+    radial-gradient(640px 520px at 100% 100%, rgba(106, 92, 255, .10), transparent 70%),
+    radial-gradient(rgba(31, 91, 216, .20) 1px, transparent 1.5px) 0 0 / 22px 22px;
+  -webkit-mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, .35) 11%, transparent 20%, transparent 80%, rgba(0, 0, 0, .35) 89%, #000);
+          mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, .35) 11%, transparent 20%, transparent 80%, rgba(0, 0, 0, .35) 89%, #000);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+strong { font-weight: 600; }
+.hl { color: var(--accent); font-weight: 600; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.wrap { max-width: 1520px; margin: 0 auto; padding: 0 clamp(20px, 3.2vw, 48px); }
+
+/* Small waveform glyph, reused by the brand and section headings */
+.wave-glyph,
+h2::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 18'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231f5bd8'/%3E%3Cstop offset='1' stop-color='%236a5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='url(%23g)'%3E%3Crect x='0' y='6' width='3.2' height='6' rx='1.6'/%3E%3Crect x='4.3' y='1' width='3.2' height='16' rx='1.6'/%3E%3Crect x='8.6' y='4' width='3.2' height='10' rx='1.6'/%3E%3Crect x='12.8' y='7' width='3.2' height='4' rx='1.6'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ========== Top bar ========== */
+.topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  height: 62px;
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); letter-spacing: -.01em; }
+.brand:hover { text-decoration: none; }
+.brand .wave-glyph { width: 16px; height: 18px; }
+.nav { display: flex; align-items: center; gap: 2px; }
+.nav a {
+  color: var(--muted);
+  font-size: 14.5px;
+  padding: 6px 11px;
+  border-radius: 8px;
+}
+.nav a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+
+/* ========== Layout ========== */
+.layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 80px);
+  padding-top: 106px;
+  padding-bottom: 40px;
+}
+
+/* ========== Sidebar / profile ========== */
+.profile { position: sticky; top: 106px; align-self: start; }
+.avatar-wrap { position: relative; width: 156px; height: 156px; }
+.avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1f5bd8 0%, #6a5cff 100%);
+  color: #fff;
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  box-shadow: 0 10px 30px rgba(31, 91, 216, .24);
+}
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* "Speaking" indicator on the avatar */
+.speaking {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(16, 24, 40, .16);
+}
+.speaking i {
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #1f5bd8, #6a5cff);
+  animation: eq 1.2s ease-in-out infinite;
+}
+.speaking i:nth-child(1) { animation-delay: -1s; }
+.speaking i:nth-child(2) { animation-delay: -.45s; }
+.speaking i:nth-child(3) { animation-delay: -.8s; }
+.speaking i:nth-child(4) { animation-delay: -.2s; }
+@keyframes eq { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+
+.name { margin: 22px 0 0; font-size: 30px; line-height: 1.2; letter-spacing: -.02em; }
+.affil { margin: 14px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.affil li + li { margin-top: 10px; }
+.affil b { display: block; color: var(--text); font-size: 15.5px; font-weight: 600; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 5px 13px 5px 11px;
+  border: 1px solid rgba(21, 128, 61, .2);
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+}
+.status .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: ping 1.8s ease-out infinite;
+}
+@keyframes ping {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, .55); }
+  80%, 100% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+.contact { margin: 18px 0 0; padding: 0; list-style: none; font-size: 14.5px; }
+.contact li + li { margin-top: 8px; }
+.contact a, .contact-item { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); }
+.contact a:hover { color: var(--accent); text-decoration: none; }
+.contact svg { width: 17px; height: 17px; flex: none; }
+
+/* ========== Sections ========== */
+section { padding-bottom: 50px; }
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 18px;
+  font-size: 23px;
+  letter-spacing: -.01em;
+}
+h2::before {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 18px;
+}
+h3.sub {
+  margin: 26px 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--faint);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; margin-bottom: 6px; }
+.section-head h2 { margin: 0; }
+.note { font-size: 13px; color: var(--faint); margin: 0; }
+
+/* ========== About ========== */
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 44px; align-items: start; }
+.lead { margin: 0 0 16px; font-size: 22px; font-weight: 650; line-height: 1.45; letter-spacing: -.015em; }
+.typed-line { display: block; min-height: 1.45em; }
+.typed { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 3px;
+  vertical-align: -.16em;
+  background: var(--violet);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.bio p { margin: 0 0 12px; }
+.interests { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.interests span {
+  padding: 4px 13px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.glance {
+  position: relative;
+  padding: 18px 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.glance::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; border-radius: 14px 14px 0 0; background: var(--grad); }
+.glance h3 { margin: 0; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+.hero-stat { display: flex; align-items: baseline; gap: 10px; margin: 8px 0 10px; }
+.hero-stat b { font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -.03em; color: var(--text); }
+.hero-stat span { font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--text); }
+
+/* Papers per venue: one bar per venue, first/co-first share emphasized */
+.venue-bars { list-style: none; margin: 0; padding: 0; }
+.venue-bars li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  height: 26px;
+  font-size: 13px;
+}
+.vb-name { color: var(--muted); font-weight: 600; }
+.vb-area { display: flex; align-items: center; gap: 8px; }
+.vb-track { display: flex; gap: 2px; width: calc(var(--total) / 6 * (100% - 24px)); height: 12px; }
+.vb-track i { flex: var(--n) 1 0; min-width: 4px; background: var(--viz-first); }
+.vb-track i.co { background: var(--viz-co); }
+.vb-track i:last-child { border-radius: 0 4px 4px 0; }
+.vb-val { color: var(--text); font-weight: 600; }
+.venue-bars li:hover .vb-track i { filter: brightness(.9); }
+.venue-bars li:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 54px;
+  bottom: calc(100% - 3px);
+  z-index: 2;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--text);
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.vb-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font-size: 12.5px; color: var(--muted); }
+.vb-legend i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 3px; vertical-align: -1px; background: var(--viz-first); }
+.vb-legend i.co { background: var(--viz-co); }
+
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.kpi { padding: 10px 12px; border-radius: 10px; background: var(--bg-soft); }
+.kpi b { display: block; font-size: 22px; line-height: 1.2; font-weight: 650; letter-spacing: -.02em; color: var(--text); }
+.kpi span { display: block; font-size: 12.5px; line-height: 1.35; color: var(--muted); }
+
+.collab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 22px;
+  padding: 16px 20px;
+  border: 1px solid #dfe6fb;
+  border-radius: 14px;
+  background: linear-gradient(100deg, #eef3ff, #f4f1ff);
+}
+.collab-icon { font-size: 28px; line-height: 1; }
+.collab p { margin: 0; flex: 1; font-size: 15px; }
+
+/* ========== News ========== */
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 15.5px;
+}
+.news-list li:last-child { border-bottom: 0; }
+.news-list:not(.expanded) li:nth-child(n + 7) { display: none; }
+.news-date { color: var(--faint); font-weight: 600; font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+.more-btn {
+  margin-top: 10px;
+  padding: 5px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font: 500 13px var(--font);
+  cursor: pointer;
+}
+.more-btn:hover { color: var(--accent); border-color: var(--accent); }
+.more-btn[aria-expanded="true"] .when-closed,
+.more-btn[aria-expanded="false"] .when-open { display: none; }
+
+/* ========== Representative publications ========== */
+.paper {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 32px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+.paper:last-of-type { border-bottom: 0; }
+
+.paper-media { position: relative; align-self: start; }
+.paper-fig {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: zoom-in;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.paper-fig:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.paper-fig:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.paper-fig img { display: block; width: 100%; height: auto; border-radius: 5px; }
+.badge {
+  position: absolute;
+  top: 10px;
+  left: -6px;
+  z-index: 1;
+  padding: 2px 10px;
+  border-radius: 4px;
+  background: var(--badge-conf);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 20px;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, .25);
+  pointer-events: none;
+}
+.badge.oral { background: var(--badge-oral); }
+.badge.pre { background: var(--badge-pre); }
+
+.paper-title { margin: 0; font-size: 17px; font-weight: 650; line-height: 1.45; letter-spacing: -.005em; }
+.paper-title a { color: var(--text); }
+.paper-title a:hover { color: var(--accent); text-decoration: none; }
+.authors { margin: 6px 0 0; font-size: 14px; color: var(--muted); line-height: 1.6; }
+.authors .me { color: var(--text); font-weight: 700; }
+.authors .alias { color: var(--faint); }
+.venue-line { margin: 3px 0 0; font-size: 14px; color: var(--muted); }
+.venue-line em { color: var(--text); }
+.tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 7px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 19px;
+  letter-spacing: .03em;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+.tldr { margin: 8px 0 12px; font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+.links { display: flex; flex-wrap: wrap; gap: 6px; }
+.links a, .links .cite {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 23px;
+}
+.links a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+.links svg { width: 13px; height: 13px; }
+.links .cite { border-style: dashed; }
+.star { color: #b26b00; }
+
+/* ========== Other publications (text list) ========== */
+.plist { list-style: none; margin: 0; padding: 0; }
+.plist li {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.plist li:last-child { border-bottom: 0; }
+.v-tag {
+  justify-self: start;
+  align-self: start;
+  margin-top: 2px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.v-tag.pre { background: var(--bg-soft); color: var(--muted); }
+.v-tag.review { padding: 0 8px; border: 1px dashed var(--faint); background: #fff; color: var(--muted); }
+.plist .t { font-weight: 600; font-size: 15.5px; color: var(--text); line-height: 1.5; }
+.plist a.t:hover { color: var(--accent); text-decoration: none; }
+.plist .authors { margin-top: 2px; font-size: 13.5px; }
+.mini { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 2px; font-size: 13px; color: var(--faint); }
+.mini a { color: var(--muted); }
+.mini a:hover { color: var(--accent); }
+
+/* ========== Experience / Education / Honors ========== */
+.entry {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+}
+.entry + .entry { border-top: 1px solid var(--line); }
+.logo { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+.logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.logo.pad img { padding: 7px; }
+.entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; }
+.entry-org { font-weight: 600; font-size: 16px; }
+.entry-time { color: var(--faint); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.entry-role { color: var(--muted); font-size: 14.5px; }
+.entry ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
+.entry li + li { margin-top: 3px; }
+
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.honors { list-style: none; margin: 0; padding: 0; }
+.honors li { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
+.honors li:last-child { border-bottom: 0; }
+.honors .yr { color: var(--faint); font-weight: 600; font-size: 14px; font-variant-numeric: tabular-nums; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 26px 0 42px;
+  color: var(--faint);
+  font-size: 13px;
+  text-align: center;
+}
+footer p { margin: 0; }
+footer p + p { margin-top: 4px; }
+
+/* ========== Lightbox ========== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 4vh 4vw;
+  background: rgba(8, 12, 20, .82);
+  cursor: zoom-out;
+  animation: fade .15s ease;
+}
+.lightbox figure { margin: 0; max-width: min(1200px, 100%); text-align: center; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 84vh;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+.lightbox figcaption { margin-top: 12px; color: #e6e9ef; font-size: 14px; font-weight: 500; }
+@keyframes fade { from { opacity: 0; } }
+
+/* ========== Responsive ========== */
+@media (max-width: 1240px) {
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .glance { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0 32px; align-items: start; }
+  .glance h3 { grid-column: 1 / -1; }
+  .kpis { margin-top: 10px; padding-top: 0; border-top: 0; }
+  .paper { grid-template-columns: 300px minmax(0, 1fr); gap: 26px; }
+}
+@media (max-width: 1100px) {
+  .duo { grid-template-columns: 1fr; }
+}
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; gap: 36px; padding-top: 92px; }
+  .profile { position: static; text-align: center; }
+  .avatar-wrap { margin: 0 auto; width: 128px; height: 128px; }
+  .avatar { font-size: 42px; }
+  .contact { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px; }
+  .contact li + li { margin-top: 0; }
+  .nav { display: none; }
+}
+@media (max-width: 720px) {
+  body { font-size: 15px; }
+  .lead { font-size: 18px; }
+  .paper { grid-template-columns: 1fr; gap: 16px; padding: 22px 0; }
+  .badge { left: -4px; }
+  .plist li { grid-template-columns: 1fr; gap: 4px; }
+  .news-list li, .honors li { grid-template-columns: 62px minmax(0, 1fr); gap: 10px; }
+  .glance { grid-template-columns: 1fr; }
+  .kpis { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+  </style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+  <symbol id="i-scholar" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+  <symbol id="i-paper" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></g></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></g></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></g></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></g></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="wave-glyph" aria-hidden="true"></span>Yifu Chen</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#honors">Honors</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap layout" id="top">
+
+  <!-- ===================== Profile ===================== -->
+  <aside class="profile">
+    <div class="avatar-wrap">
+      <!-- To use a photo: put it at assets/avatar.jpg (square, ≥400px). It falls back to the monogram if missing. -->
+      <div class="avatar" aria-hidden="true">YC<img src="assets/avatar.jpg" alt="" onerror="this.remove()"></div>
+      <span class="speaking" aria-hidden="true" title="Always happy to talk!"><i></i><i></i><i></i><i></i></span>
+    </div>
+    <h1 class="name">Yifu Chen</h1>
+    <ul class="affil">
+      <li><b>Zhejiang University</b>M.S. Student</li>
+    </ul>
+    <span class="status"><span class="dot" aria-hidden="true"></span>Open to collaborations</span>
+    <ul class="contact">
+      <li><span class="contact-item"><svg width="14" height="14"><use href="#i-mail"/></svg>Eve106298@163.com</span></li>
+      <li><a href="https://scholar.google.com/citations?user=YNSceTYAAAAJ" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-scholar"/></svg>Google Scholar</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <!-- ===================== About ===================== -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="bio">
+          <p class="lead">I build spoken dialogue models that
+            <span class="typed-line"><span class="typed" aria-hidden="true" data-phrases="listen while speaking|think while talking|keep working while chatting|know when to speak">listen while speaking</span><span class="caret" aria-hidden="true"></span><span class="sr-only">listen while speaking, think while talking, keep working while chatting, and know when to speak.</span></span>
+          </p>
+          <p>I am a second-year M.S. student in Electronic Information (Artificial Intelligence) at <strong>Zhejiang University</strong>, and currently a research intern at <strong>Tencent Hunyuan</strong>, working on post-training of speech models. Previously, I interned at <strong>Alibaba Tongyi Lab</strong>, and received my B.Eng. from <strong>Beijing University of Posts and Telecommunications (BUPT)</strong>.</p>
+          <p>My research focuses on <span class="hl">spoken dialogue models</span>, especially their post-training, full-duplex interaction, and multimodal agents. So far I have co-authored <strong>18 papers</strong>, including <strong>13 at top conferences</strong> such as ACL, EMNLP, ICLR, ECCV and AAAI — <strong>6 of them as first or co-first author</strong>, with <strong>2 ACL main conference orals</strong>.</p>
+          <div class="interests">
+            <span>Spoken Dialogue Post-training</span>
+            <span>Full-Duplex Interaction</span>
+            <span>Multimodal Agents</span>
+          </div>
+          <div class="collab" id="collab">
+            <div class="collab-icon" aria-hidden="true">🤝</div>
+            <p><strong>I'm actively looking for collaborations!</strong> If you are interested in spoken dialogue models, full-duplex interaction or multimodal agents, feel free to email me at <strong>Eve106298@163.com</strong> — I'm always happy to chat.</p>
+          </div>
+        </div>
+
+        <aside class="glance" aria-labelledby="glance-title">
+          <h3 id="glance-title">Research highlights</h3>
+          <div class="glance-main">
+            <div class="hero-stat"><b>13</b><span>top-conference<br>papers</span></div>
+            <ul class="venue-bars" aria-label="Top-conference papers by venue">
+            <li data-tip="ACL: 6 papers · 5 first / co-first"><span class="vb-name">ACL</span><span class="vb-area"><span class="vb-track" style="--total:6" aria-hidden="true"><i style="--n:5"></i><i class="co" style="--n:1"></i></span><span class="vb-val" aria-hidden="true">6</span><span class="sr-only">6 papers, 5 as first or co-first author</span></span></li>
+            <li data-tip="EMNLP: 3 papers · 1 first / co-first"><span class="vb-name">EMNLP</span><span class="vb-area"><span class="vb-track" style="--total:3" aria-hidden="true"><i style="--n:1"></i><i class="co" style="--n:2"></i></span><span class="vb-val" aria-hidden="true">3</span><span class="sr-only">3 papers, 1 as first or co-first author</span></span></li>
+            <li data-tip="ECCV: 2 papers"><span class="vb-name">ECCV</span><span class="vb-area"><span class="vb-track" style="--total:2" aria-hidden="true"><i class="co" style="--n:2"></i></span><span class="vb-val" aria-hidden="true">2</span><span class="sr-only">2 papers, 0 as first or co-first author</span></span></li>
+            <li data-tip="ICLR: 1 paper"><span class="vb-name">ICLR</span><span class="vb-area"><span class="vb-track" style="--total:1" aria-hidden="true"><i class="co" style="--n:1"></i></span><span class="vb-val" aria-hidden="true">1</span><span class="sr-only">1 papers, 0 as first or co-first author</span></span></li>
+            <li data-tip="AAAI: 1 paper"><span class="vb-name">AAAI</span><span class="vb-area"><span class="vb-track" style="--total:1" aria-hidden="true"><i class="co" style="--n:1"></i></span><span class="vb-val" aria-hidden="true">1</span><span class="sr-only">1 papers, 0 as first or co-first author</span></span></li>
+            </ul>
+            <div class="vb-legend" aria-hidden="true"><span><i></i>First / co-first author (6)</span><span><i class="co"></i>Co-author (7)</span></div>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><b>18</b><span>Papers in total</span></div>
+            <div class="kpi"><b>607</b><span>Citations · <span style="white-space:nowrap">h-index 8</span></span></div>
+            <div class="kpi"><b>2</b><span>ACL main conference orals</span></div>
+            <div class="kpi"><b>2.3k+</b><span>GitHub stars</span></div>
+          </div>
+        </aside>
+      </div>
+
+    </section>
+
+    <!-- ===================== News ===================== -->
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news-list" id="news-list">
+        <li>
+          <span class="news-date">2026.10</span>
+          <div>🏅 Received the <strong>National Scholarship</strong> at Zhejiang University.</div>
+        </li>
+        <li>
+          <span class="news-date">2026.09</span>
+          <div>🚀 Released <a href="#pub-gander"><strong>Gander</strong></a>, an open-source multimodal duplex interaction agent that keeps talking while it works (<a href="https://github.com/Omni-Interaction-Gander/Omni-Interaction-Agent" target="_blank" rel="noopener">566★</a>).</div>
+        </li>
+        <li>
+          <span class="news-date">2026.08</span>
+          <div>🎉 <strong>2 papers</strong> accepted to <strong>EMNLP 2026</strong> Main: <a href="#pub-duplexsurvey">Full-Duplex Survey</a> and <a href="#pub-x3opd">X³-OPD</a>.</div>
+        </li>
+        <li>
+          <span class="news-date">2026.04</span>
+          <div>🎉 <strong>5 papers</strong> accepted to <strong>ACL 2026</strong> (4 as first / co-first author), with <a href="#pub-dualaxis">Dual-Axis GRM</a> selected as an <strong>Oral</strong>.</div>
+        </li>
+        <li>
+          <span class="news-date">2026.02</span>
+          <div>💼 Joined <strong>Tencent Hunyuan</strong> as a research intern, working on speech model post-training.</div>
+        </li>
+        <li>
+          <span class="news-date">2025.09</span>
+          <div>🎓 Started my M.S. at <strong>Zhejiang University</strong> after graduating from BUPT.</div>
+        </li>
+        <li>
+          <span class="news-date">2025.08</span>
+          <div>🎉 <a href="#pub-interactspeech">InteractSpeech</a> is accepted to <strong>EMNLP 2025</strong> Findings.</div>
+        </li>
+        <li>
+          <span class="news-date">2025.05</span>
+          <div>🎉 <a href="#pub-wavrag">WavRAG</a> is accepted to <strong>ACL 2025</strong> Main as an <strong>Oral</strong>. Joined <strong>Alibaba Tongyi Lab</strong> as a research intern.</div>
+        </li>
+        <li>
+          <span class="news-date">2025.01</span>
+          <div>🎉 <a href="#pub-wavtokenizer">WavTokenizer</a> is accepted to <strong>ICLR 2025</strong>.</div>
+        </li>
+        <li>
+          <span class="news-date">2024.11</span>
+          <div>📖 Released <a href="#pub-wavchat">WavChat</a>, a 60-page survey of spoken dialogue models.</div>
+        </li>
+      </ul>
+      <button class="more-btn" id="news-more" type="button" aria-expanded="false" aria-controls="news-list">
+        <span class="when-closed">Show all news ↓</span>
+        <span class="when-open">Show less ↑</span>
+      </button>
+    </section>
+
+    <!-- ===================== Representative publications ===================== -->
+    <section id="publications">
+      <div class="section-head">
+        <h2>Representative Publications</h2>
+        <p class="note">* Equal contribution · Click a figure to enlarge · Full list on <a href="https://scholar.google.com/citations?user=YNSceTYAAAAJ" target="_blank" rel="noopener">Google Scholar</a></p>
+      </div>
+
+      <article class="paper" id="pub-gander">
+        <div class="paper-media">
+          <span class="badge pre">arXiv 2026</span>
+          <button class="paper-fig" type="button" aria-label="Enlarge figure">
+            <img src="assets/papers/gander.webp" width="1400" height="800" loading="lazy" alt="Gander capabilities: screen-grounded chat, agentic work while chatting, backchannel and interruption, multi-party robustness and proactive visual reminders">
+          </button>
+        </div>
+        <div>
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2609.08977" target="_blank" rel="noopener">Gander: Multimodal Duplex Interaction Agent</a></h4>
+          <p class="authors"><span class="me">Yifu Chen</span><span class="alias"> (Orantqing)</span>, Shengpeng Ji, Junlong Tong, Jialong Zuo, Dongjie Fu, Di Cao, Yangzhuo Li, Shangda Wu, et al.</p>
+          <p class="venue-line"><em>Technical Report, arXiv 2026</em><span class="tag">First Author</span></p>
+          <p class="tldr">An open-source native duplex interaction model with an asynchronous agent loop. A cerebellum–brain architecture pairs a streaming Thinker-Talker with an asynchronous reasoning agent, unifying continuous multimodal perception, full-duplex conversation and long-horizon task execution — users can interrupt, redirect or share their screen while work continues.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2609.08977" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>Paper</a>
+            <a href="https://omni-interaction-gander.github.io/Omni-Interaction-Agent" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-globe"/></svg>Project</a>
+            <a href="https://github.com/Omni-Interaction-Gander/Omni-Interaction-Agent" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-github"/></svg>Code <span class="star">★</span>566</a>
+            <a href="https://huggingface.co/Gander-Omni/Gander" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-cube"/></svg>Model</a>
+            <a href="https://youtu.be/-HFTZaZkfEU" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-play"/></svg>Demo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="paper" id="pub-dualaxis">
+        <div class="paper-media">
+          <span class="badge oral">ACL 2026 · Oral</span>
+          <button class="paper-fig" type="button" aria-label="Enlarge figure">
+            <img src="assets/papers/dualaxis.webp" width="1067" height="804" loading="lazy" alt="Interaction-aware evaluator compared with traditional evaluation methods for spoken dialogue">
+          </button>
+        </div>
+        <div>
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2604.14920" target="_blank" rel="noopener">Dual-Axis Generative Reward Model Toward Semantic and Turn-taking Robustness in Interactive Spoken Dialogue Models</a></h4>
+          <p class="authors"><span class="me">Yifu Chen*</span>, Shengpeng Ji*, Zhengqing Liu*, Qian Chen, Wen Wang, Ziqing Wang, Yangzhuo Li, Tianle Liang, Zhou Zhao</p>
+          <p class="venue-line"><em>ACL 2026 (Main Conference) · Oral Presentation</em><span class="tag">First Author</span></p>
+          <p class="tldr">A generative reward model that decouples semantics and timing, jointly judging <em>what</em> a spoken dialogue model says and <em>when</em> it responds — a unified feedback signal for end-to-end speech interaction.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2604.14920" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>Paper</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="paper" id="pub-wavalign">
+        <div class="paper-media">
+          <span class="badge">ACL 2026 Findings</span>
+          <button class="paper-fig" type="button" aria-label="Enlarge figure">
+            <img src="assets/papers/wavalign.webp" width="1400" height="878" loading="lazy" alt="Motivation of WavAlign: failure modes of unified RL for end-to-end spoken dialogue models">
+          </button>
+        </div>
+        <div>
+          <h4 class="paper-title"><a href="https://aclanthology.org/2026.findings-acl.114/" target="_blank" rel="noopener">WavAlign: Enhancing Intelligence and Expressiveness in Spoken Dialogue Models via Adaptive Hybrid Post-Training</a></h4>
+          <p class="authors"><span class="me">Yifu Chen*</span>, Shengpeng Ji*, Qian Chen*, Tianle Liang, Yangzhuo Li, Ziqing Wang, Wen Wang, Jingyu Lu, Haoxiao Wang, Xueyi Pu, Fan Zhuo, Zhou Zhao</p>
+          <p class="venue-line"><em>Findings of ACL 2026</em><span class="tag">First Author</span></p>
+          <p class="tldr">A hybrid-policy post-training framework for end-to-end spoken dialogue models, using dynamic guidance to escape local optima in RL and improve both reasoning and expressive interaction.</p>
+          <div class="links">
+            <a href="https://aclanthology.org/2026.findings-acl.114/" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>Paper</a>
+            <a href="https://arxiv.org/abs/2604.14932" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="paper" id="pub-voxmind">
+        <div class="paper-media">
+          <span class="badge">ACL 2026</span>
+          <button class="paper-fig" type="button" aria-label="Enlarge figure">
+            <img src="assets/papers/voxmind.webp" width="1400" height="705" loading="lazy" alt="Overall architecture of VoxMind">
+          </button>
+        </div>
+        <div>
+          <h4 class="paper-title"><a href="https://arxiv.org/abs/2604.15710" target="_blank" rel="noopener">VoxMind: An End-to-End Agentic Spoken Dialogue System</a></h4>
+          <p class="authors">Tianle Liang*, <span class="me">Yifu Chen*</span>, Shengpeng Ji*, Yijun Chen, Zhiyang Jia, Jingyu Lu, Fan Zhuo, Xueyi Pu, Yangzhuo Li, Zhou Zhao</p>
+          <p class="venue-line"><em>ACL 2026 (Main Conference)</em><span class="tag">Co-first Author</span></p>
+          <p class="tldr">An end-to-end spoken agent with Think-before-Speak reasoning and asynchronous tool management for efficient complex-task planning.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2604.15710" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>Paper</a>
+            <a href="https://github.com/MM-Speech/VoxMind" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-github"/></svg>Code</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="paper" id="pub-interactspeech">
+        <div class="paper-media">
+          <span class="badge">EMNLP 2025 Findings</span>
+          <button class="paper-fig" type="button" aria-label="Enlarge figure">
+            <img src="assets/papers/interactspeech.webp" width="1378" height="835" loading="lazy" alt="Interaction types in InteractSpeech: response, backchannel, interval and interrupt">
+          </button>
+        </div>
+        <div>
+          <h4 class="paper-title"><a href="https://aclanthology.org/2025.findings-emnlp.424/" target="_blank" rel="noopener">InteractSpeech: A Speech Dialogue Interaction Corpus for Spoken Dialogue Model</a></h4>
+          <p class="authors"><span class="me">Yifu Chen*</span>, Shengpeng Ji*, Ziqing Wang, Hanting Wang, Zhou Zhao</p>
+          <p class="venue-line"><em>Findings of EMNLP 2025</em><span class="tag">First Author</span></p>
+          <p class="tldr">A 150-hour multi-turn interactive speech corpus with precise speaker timestamps and interaction scenarios (backchannels, intervals, interruptions) — training data for real-time barge-in modeling in full-duplex dialogue.</p>
+          <div class="links">
+            <a href="https://aclanthology.org/2025.findings-emnlp.424/" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>Paper</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="paper" id="pub-wavrag">
+        <div class="paper-media">
+          <span class="badge oral">ACL 2025 · Oral</span>
+          <button class="paper-fig" type="button" aria-label="Enlarge figure">
+            <img src="assets/papers/wavrag.webp" width="1400" height="788" loading="lazy" alt="Architecture of the WavRAG framework compared with a traditional ASR-based RAG pipeline">
+          </button>
+        </div>
+        <div>
+          <h4 class="paper-title"><a href="https://aclanthology.org/2025.acl-long.613/" target="_blank" rel="noopener">WavRAG: Audio-Integrated Retrieval Augmented Generation for Spoken Dialogue Models</a></h4>
+          <p class="authors"><span class="me">Yifu Chen*</span>, Shengpeng Ji*, Haoxiao Wang*, Ziqing Wang, Siyu Chen, Jinzheng He, Jin Xu, Zhou Zhao</p>
+          <p class="venue-line"><em>ACL 2025 (Main Conference) · Oral Presentation</em><span class="tag">First Author</span></p>
+          <p class="tldr">The first native audio RAG framework: retrieves raw audio directly and fuses a hybrid text–audio knowledge base to strengthen knowledge use in spoken dialogue.</p>
+          <div class="links">
+            <a href="https://aclanthology.org/2025.acl-long.613/" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>Paper</a>
+            <a href="https://arxiv.org/abs/2502.14727" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-paper"/></svg>arXiv</a>
+            <span class="cite">52 citations</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===================== Other publications ===================== -->
+    <section id="more-publications">
+      <h2>Other Publications</h2>
+
+      <h3 class="sub">Conference Papers</h3>
+      <ul class="plist">
+        <li id="pub-dualreasoner">
+          <span class="v-tag">ACL 2026 Findings</span>
+          <div>
+            <a class="t" href="https://aclanthology.org/2026.findings-acl.199/" target="_blank" rel="noopener">Dual-Reasoner: Bridging Interleaved Atomicity and Streaming Latency via Thinking-while-Talking</a>
+            <div class="authors">Yangzhuo Li*, Shengpeng Ji*, <span class="me">Yifu Chen*</span>, Tianle Liang, Haoyu Yang, Junbo Li, Jun Fang, Lin Li, Qingyang Hong</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag">ACL 2026</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2603.14889" target="_blank" rel="noopener">SDiaReward: Modeling and Benchmarking Spoken Dialogue Rewards with Modality and Colloquialness</a>
+            <div class="authors">Jingyu Lu, Yuhan Wang, Fan Zhuo, Xize Cheng, Changhao Pan, Xueyi Pu, <span class="me">Yifu Chen</span>, Chenyuhao Wen, Tianle Liang, Zhou Zhao</div>
+          </div>
+        </li>
+        <li id="pub-duplexsurvey">
+          <span class="v-tag">EMNLP 2026</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2606.19453" target="_blank" rel="noopener">A Survey of Full-Duplex Spoken Dialogue Systems: Architectural Hierarchy, Interaction Ontology, and Decision State Machine</a>
+            <div class="authors">Jingyu Lu, Yuhan Wang, Jianming Luo, <span class="me">Yifu Chen</span>, Tianle Liang, Shengpeng Ji, Ziyue Jiang, Xiaoda Yang, et al.</div>
+            <div class="mini"><a href="https://github.com/MM-Speech/DuplexSurvey" target="_blank" rel="noopener">Code ★110</a></div>
+          </div>
+        </li>
+        <li id="pub-x3opd">
+          <span class="v-tag">EMNLP 2026</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2607.21550" target="_blank" rel="noopener">X³-OPD: Distilling Reasoning into Large Audio-Language Models via On-Policy Alignment</a>
+            <div class="authors">Dongjie Fu, Di Cao, Xize Cheng, Zihan Zhang, Wenxu Jia, <span class="me">Yifu Chen</span>, Shengpeng Ji, Yu Zhang, Tao Jin</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag">ECCV 2026</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2604.24575" target="_blank" rel="noopener">Diffusion Model as a Generalist Segmentation Learner</a>
+            <div class="authors">Haoxiao Wang, Antao Xiang, Haiyang Sun, Peilin Sun, Changhao Pan, <span class="me">Yifu Chen</span>, Minjie Hong, Weijie Wang, Shuang Chen, Yue Chen, Zhou Zhao</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag">AACL 2026 Findings</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2606.23139" target="_blank" rel="noopener">Audio Editing in the Era of Foundation Models: A Survey</a>
+            <div class="authors">Changhao Pan, Yifei Fan, Fan Zhuo, <span class="me">Yifu Chen</span>, Wenxiang Guo, Yu Zhang, Ruiqi Li, Zhiyuan Zhu, et al.</div>
+          </div>
+        </li>
+        <li id="pub-wavtokenizer">
+          <span class="v-tag">ICLR 2025</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2408.16532" target="_blank" rel="noopener">WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling</a>
+            <div class="authors">Shengpeng Ji, Ziyue Jiang, Wen Wang, <span class="me">Yifu Chen</span>, Minghui Fang, Jialong Zuo, Qian Yang, Xize Cheng, et al.</div>
+            <div class="mini"><a href="https://github.com/jishengpeng/WavTokenizer" target="_blank" rel="noopener">Code ★1.3k</a><span>284 citations</span></div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag">AAAI 2025</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2412.13917" target="_blank" rel="noopener">Speech Watermarking with Discrete Intermediate Representations</a>
+            <div class="authors">Shengpeng Ji, Ziyue Jiang, Jialong Zuo, Minghui Fang, <span class="me">Yifu Chen</span>, Tao Jin, Zhou Zhao</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag">ECCV 2024</span>
+          <div>
+            <a class="t" href="https://link.springer.com/chapter/10.1007/978-3-031-72949-2_10" target="_blank" rel="noopener">HeteCooper: Feature Collaboration Graph for Heterogeneous Collaborative Perception</a>
+            <div class="authors">Congzhang Shao, Guiyang Luo, Quan Yuan, <span class="me">Yifu Chen</span>, Yilin Liu, Kexin Gong, Jinglin Li</div>
+          </div>
+        </li>
+      </ul>
+
+      <h3 class="sub">Preprints &amp; Under Review</h3>
+      <ul class="plist">
+        <li>
+          <span class="v-tag review">Under Review</span>
+          <div>
+            <span class="t">Verifier-Guided Reinforcement Learning for Spoken Dialogue Models</span>
+            <div class="authors"><span class="me">Yifu Chen</span>, et al.</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag review">Under Review</span>
+          <div>
+            <span class="t">Dy-VoiceBench: Stateful Worlds and Living Users for Evaluating Dynamic Spoken Dialogue Agents</span>
+            <div class="authors"><span class="me">Yifu Chen</span>, et al.</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag pre">arXiv 2026</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2602.12135" target="_blank" rel="noopener">WavBench: Benchmarking Reasoning, Colloquialism, and Paralinguistics for End-to-End Spoken Dialogue Models</a>
+            <div class="authors">Yangzhuo Li, Shengpeng Ji, <span class="me">Yifu Chen</span>, Tianle Liang, Haorong Ying, Yule Wang, Junbo Li, Jun Fang, Zhou Zhao</div>
+          </div>
+        </li>
+        <li>
+          <span class="v-tag pre">arXiv 2025</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2505.09558" target="_blank" rel="noopener">WavReward: Spoken Dialogue Models With Generalist Reward Evaluators</a>
+            <div class="authors">Shengpeng Ji, Tianle Liang, Yangzhuo Li, Jialong Zuo, Minghui Fang, Jinzheng He, <span class="me">Yifu Chen</span>, Zhengqing Liu, et al.</div>
+          </div>
+        </li>
+        <li id="pub-wavchat">
+          <span class="v-tag pre">arXiv 2024</span>
+          <div>
+            <a class="t" href="https://arxiv.org/abs/2411.13577" target="_blank" rel="noopener">WavChat: A Survey of Spoken Dialogue Models</a>
+            <div class="authors">Shengpeng Ji*, <span class="me">Yifu Chen*</span>, Minghui Fang*, Jialong Zuo*, Jingyu Lu, Hanting Wang, Ziyue Jiang, Long Zhou, et al.</div>
+            <div class="mini"><a href="https://github.com/jishengpeng/WavChat" target="_blank" rel="noopener">Code ★317</a><span>140 citations</span></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===================== Experience ===================== -->
+    <section id="experience">
+      <h2>Research Experience</h2>
+
+      <div class="entry">
+        <div class="logo pad"><img src="assets/hunyuan.png" alt="Tencent Hunyuan"></div>
+        <div>
+          <div class="entry-head">
+            <span class="entry-org">Tencent Hunyuan · Foundation Model Dept.</span>
+            <span class="entry-time">2026.02 – Present</span>
+          </div>
+          <div class="entry-role">Research Intern · Post-training of speech models</div>
+          <ul>
+            <li><strong>Speech translation &amp; post-training:</strong> speech translation data construction and RL post-training algorithm iteration.</li>
+            <li><strong>HYLive:</strong> defined, built and iterated the dual-brain data synthesis pipeline, and designed post-training methods.</li>
+            <li><strong>Output:</strong> <a href="#pub-gander">Gander: Multimodal Duplex Interaction Agent</a> (first author, 566★).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="logo pad"><img src="assets/tongyi.png" alt="Alibaba Tongyi Lab"></div>
+        <div>
+          <div class="entry-head">
+            <span class="entry-org">Alibaba Tongyi Lab</span>
+            <span class="entry-time">2025.05 – 2026.02</span>
+          </div>
+          <div class="entry-role">Research Intern · LLM-based audio understanding &amp; generation</div>
+          <ul>
+            <li>Reward modeling and RL post-training for end-to-end spoken dialogue models.</li>
+            <li><strong>Output:</strong> <a href="#pub-dualaxis">Dual-Axis GRM</a> (ACL 2026 Oral), <a href="#pub-wavalign">WavAlign</a> (ACL 2026 Findings) and a verifier-guided RL paper (under review) — all as first author.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="duo">
+      <!-- ===================== Education ===================== -->
+      <section id="education">
+        <h2>Education</h2>
+
+        <div class="entry">
+          <div class="logo"><img src="assets/zju.png" alt="Zhejiang University"></div>
+          <div>
+            <div class="entry-head">
+              <span class="entry-org">Zhejiang University</span>
+              <span class="entry-time">2025.09 – 2028.06</span>
+            </div>
+            <div class="entry-role">M.S. in Electronic Information (Artificial Intelligence)</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="logo"><img src="assets/bupt.png" alt="Beijing University of Posts and Telecommunications"></div>
+          <div>
+            <div class="entry-head">
+              <span class="entry-org">Beijing Univ. of Posts and Telecommunications</span>
+              <span class="entry-time">2021.09 – 2025.06</span>
+            </div>
+            <div class="entry-role">B.Eng. in Electronic Information Engineering</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Honors ===================== -->
+      <section id="honors">
+        <h2>Honors &amp; Awards</h2>
+        <ul class="honors">
+          <li><span class="yr">2026</span><span>National Scholarship, Ministry of Education of China</span></li>
+          <li><span class="yr">2026</span><span>Oral Presentation, ACL 2026 Main Conference — <a href="#pub-dualaxis">Dual-Axis GRM</a></span></li>
+          <li><span class="yr">2025</span><span>Oral Presentation, ACL 2025 Main Conference — <a href="#pub-wavrag">WavRAG</a></span></li>
+        </ul>
+      </section>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Thanks for stopping by! 👋</p>
+    <p>© 2026 Yifu Chen · Last updated Nov 2026 · Citation counts from Google Scholar</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Figure preview" hidden>
+  <figure><img alt=""><figcaption></figcaption></figure>
+</div>
+
+<script>
+(() => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Typewriter tagline: cycles through the phrases in data-phrases
+  const typed = document.querySelector(".typed");
+  const phrases = typed.dataset.phrases.split("|");
+  if (!reduceMotion) {
+    let i = 0, n = phrases[0].length, deleting = true;
+    const tick = () => {
+      const p = phrases[i];
+      n += deleting ? -1 : 1;
+      typed.textContent = p.slice(0, n);
+      if (deleting && n === 0) {
+        deleting = false;
+        i = (i + 1) % phrases.length;
+        setTimeout(tick, 400);
+      } else if (!deleting && n === p.length) {
+        deleting = true;
+        setTimeout(tick, 2400);
+      } else {
+        setTimeout(tick, deleting ? 30 : 65);
+      }
+    };
+    setTimeout(tick, 2400);
+  }
+
+  // News: show first 6, expand on demand
+  const newsList = document.getElementById("news-list");
+  const newsMore = document.getElementById("news-more");
+  newsMore.hidden = newsList.children.length <= 6;
+  newsMore.addEventListener("click", () => {
+    newsMore.setAttribute("aria-expanded", String(newsList.classList.toggle("expanded")));
+  });
+
+  // Lightbox for paper figures
+  const box = document.getElementById("lightbox");
+  const boxImg = box.querySelector("img");
+  const boxCap = box.querySelector("figcaption");
+  let opener = null;
+  const close = () => {
+    box.hidden = true;
+    document.body.style.overflow = "";
+    if (opener) opener.focus();
+  };
+  document.querySelectorAll(".paper-fig").forEach((btn) => btn.addEventListener("click", () => {
+    const img = btn.querySelector("img");
+    opener = btn;
+    boxImg.src = img.currentSrc || img.src;
+    boxImg.alt = img.alt;
+    boxCap.textContent = btn.closest(".paper").querySelector(".paper-title").textContent;
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+  }));
+  box.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !box.hidden) close(); });
+})();
+</script>
+</body>
+</html>
